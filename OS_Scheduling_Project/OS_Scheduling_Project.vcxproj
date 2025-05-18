@@ -22,8 +22,11 @@
     <ClCompile Include="Driver.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FCFS_Scheduler.h" />
+    <ClInclude Include="GanttChart.h" />
     <ClInclude Include="Process.h" />
     <ClInclude Include="Scheduler.h" />
+    <ClInclude Include="SJF_Scheduler.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
