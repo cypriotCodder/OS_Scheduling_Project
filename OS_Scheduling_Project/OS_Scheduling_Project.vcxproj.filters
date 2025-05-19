@@ -36,7 +36,7 @@
     <ClCompile Include="SJF_Scheduler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Priority_Scheduling.cpp">
+    <ClCompile Include="Priority_Scheduler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,7 +59,7 @@
     <ClInclude Include="TaskParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Priority_Scheduling.h">
+    <ClInclude Include="Priority_Scheduler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

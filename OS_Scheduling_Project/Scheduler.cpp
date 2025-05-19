@@ -16,8 +16,9 @@ Scheduler::~Scheduler()
 void Scheduler::run() const
 {
 	//Run FCFS Scheduler
-	fcfs_Scheduler.run(this->waitingQueue); //TODO: Implement the run function in FCFS_Scheduler
-	sjfScheduler.run(this->waitingQueue); //TODO: Implement the run function in SJF_Scheduler
+	fcfs_Scheduler.run(this->waitingQueue); 
+	sjfScheduler.run(this->waitingQueue); 
+	priorityScheduler.run(this->waitingQueue); 
 }
 
 void Scheduler::printProcesses() const

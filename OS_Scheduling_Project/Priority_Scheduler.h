@@ -3,11 +3,11 @@
 #include "Process.h"
 #include <iostream>
 
-class Priority_Scheduling
+class Priority_Scheduler
 {
 public:
-	Priority_Scheduling();
-	~Priority_Scheduling();
+	Priority_Scheduler();
+	~Priority_Scheduler();
 	void run(std::vector<Process> waitingQ)							const;
 	float getAverageTurnaroundTime(std::vector<Process> processes)	const;
 	float getAverageWaitingTime(std::vector<Process> processes)		const;

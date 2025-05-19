@@ -1,4 +1,4 @@
-#include "Priority_Scheduling.h"
+#include "Priority_Scheduler.h"
 #include <iostream>
 #include <vector> 
 #include "Process.h"
@@ -7,15 +7,15 @@
 
 using namespace std;
 
-Priority_Scheduling::Priority_Scheduling()
+Priority_Scheduler::Priority_Scheduler()
 {
 }
 
-Priority_Scheduling::~Priority_Scheduling()
+Priority_Scheduler::~Priority_Scheduler()
 {
 }
 
-void Priority_Scheduling::run(std::vector<Process> waitingQ) const
+void Priority_Scheduler::run(std::vector<Process> waitingQ) const
 {
 	GanttChart ganttChart;							
 	vector<Process> sortedProcesses;
@@ -53,15 +53,17 @@ void Priority_Scheduling::run(std::vector<Process> waitingQ) const
 		cout << "Waiting Time: " << currentProcess.getWaitingTime() << endl;
 		cout << "Turnaround Time: " << currentProcess.getTurnaroundTime() << "\n" << endl;
 	}
-	
+
+	cout << "===================== PRIORITY ALGORITHM =====================\n";
+	ganttChart.print();
 }
 
-float Priority_Scheduling::getAverageTurnaroundTime(std::vector<Process> processes) const
+float Priority_Scheduler::getAverageTurnaroundTime(std::vector<Process> processes) const
 {
 	return 0.0f;
 }
 
-float Priority_Scheduling::getAverageWaitingTime(std::vector<Process> processes) const
+float Priority_Scheduler::getAverageWaitingTime(std::vector<Process> processes) const
 {
 	return 0.0f;
 }
