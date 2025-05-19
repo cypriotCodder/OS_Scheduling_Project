@@ -13,7 +13,7 @@ GanttChart::~GanttChart()
 {
 }
 
-void GanttChart::stamp(Process p)
+void GanttChart::stamp(Process p) const
 {
 	//new entry
 	Process newProcess_entry(p.getPID(), p.getArrivalTime(), p.getBurstTime(), p.getRemainingTime(), p.getPriority());

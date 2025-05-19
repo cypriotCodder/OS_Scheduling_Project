@@ -8,7 +8,7 @@ int main()
 {
 	cout << "This is a simple OS Scheduling Project.\n";
 	cout << "This project will implement various scheduling algorithms.\n";
-	cout << "The algorithms are implemented in C++.\n";
+	cout << "The algorithms are implemented in C++.\n\n";
 
 	//to test the TaskParser
 	TaskParser taskParser;

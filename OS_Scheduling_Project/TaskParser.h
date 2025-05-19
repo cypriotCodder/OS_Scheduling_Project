@@ -10,7 +10,7 @@ public:
 	TaskParser();
 	~TaskParser();
 
-	std::vector<Process> parseFile(const std::string& filename);
+	std::vector<Process> parseFile(const std::string& filename) const;
 
 private:
 	
