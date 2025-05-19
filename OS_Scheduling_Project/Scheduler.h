@@ -11,11 +11,9 @@ public:
 	~Scheduler();
 
 	void run()							const;
-	//void printGanttChart()				const;
 	void printProcesses()				const;
-	void printAverageTurnaroundTime()	const;
-	void printAverageWaitingTime()		const;
-	void printAverageResponseTime()		const;
+	float getAverageTurnaroundTime()	const;
+	float getAverageWaitingTime()		const;
 
 
 protected:

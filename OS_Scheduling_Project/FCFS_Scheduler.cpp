@@ -47,7 +47,8 @@ void FCFS_Scheduler::run(vector<Process> waitingQ) const
 
 	}
 		// Print the Gantt chart
-		ganttChart.print();
+	cout << "===================== FCFS ALGORITHM =====================\n";
+	ganttChart.print();
 }
 
 

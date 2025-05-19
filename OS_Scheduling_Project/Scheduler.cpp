@@ -20,6 +20,18 @@ void Scheduler::run() const
 
 }
 
+float Scheduler::getAverageTurnaroundTime() const
+{
+	return 0.0f;
+}
+
+float Scheduler::getAverageWaitingTime() const
+{
+	return 0.0f;
+}
+
+
+
 
 
 

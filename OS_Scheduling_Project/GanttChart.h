@@ -9,8 +9,11 @@ public:
 	GanttChart();
 	~GanttChart();
 
+	//Setter
+	void setStampEntries(std::vector<Process> stampEntries) { this->stampEntries = stampEntries; }
+
 	//Function to stamp the PID from t-start to t-end
-	void stamp(Process p)	const;
+	void stamp(Process p);
 
 	//Function to print the Gantt chart
 	void print()			const;
