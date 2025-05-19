@@ -7,6 +7,8 @@ using namespace std;
 
 GanttChart::GanttChart()
 {
+	// Initialize the Gantt chart with an empty vector of Process objects
+	this->stampEntries = vector<Process>();
 }
 
 GanttChart::~GanttChart()
@@ -24,5 +26,8 @@ void GanttChart::stamp(Process p) const
 
 void GanttChart::print() const
 {
-	
+	cout << "======= Gannt Chart =======\n";
+	for (const auto& entry : stampEntries) {
+		cout << "[" << entry.getStart() << " - " << entry.getEnd() << "] " << entry.getPID() << " --";
+	}
 }

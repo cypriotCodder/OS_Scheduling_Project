@@ -14,7 +14,7 @@ int main()
 	//to test the TaskParser
 	TaskParser taskParser;
 	vector<Process> processes = taskParser.parseFile("Tasks.txt");
-	cout << "Parsed " << processes.size() << " processes from the file.\n";
+	cout << "Parsed " << processes.size() << " processes from the file.\n\n";
 
 	//to test the Scheduler
 	Scheduler scheduler(processes);

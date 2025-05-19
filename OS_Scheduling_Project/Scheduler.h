@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 #include "Process.h"
-#include "GanttChart.h"
 #include "FCFS_Scheduler.h"
 
 
@@ -12,7 +11,7 @@ public:
 	~Scheduler();
 
 	void run()							const;
-	void printGanttChart()				const;
+	//void printGanttChart()				const;
 	void printProcesses()				const;
 	void printAverageTurnaroundTime()	const;
 	void printAverageWaitingTime()		const;
@@ -23,7 +22,6 @@ protected:
 	std::vector<Process> readyQueue;	// Pointer to the process queue
 	std::vector<Process> waitingQueue;	// Pointer to the waiting queue
 	std::vector<Process> finishedQueue;	// Pointer to the finished queue
-	GanttChart ganttChart;				// Gantt chart object
 
 	FCFS_Scheduler fcfs_Scheduler;				// FCFS scheduler object
 	//SJF_Scheduler sjfScheduler;				// SJF scheduler object

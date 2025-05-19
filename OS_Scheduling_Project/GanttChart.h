@@ -10,12 +10,13 @@ public:
 	~GanttChart();
 
 	//Function to stamp the PID from t-start to t-end
-	void stamp(Process p) const;
+	void stamp(Process p)	const;
 
 	//Function to print the Gantt chart
-	void print() const;
+	void print()			const;
 
-	
+	//Getter for the stamp entries
+	const std::vector<Process> getStampEntries() const { return stampEntries; }
 
 private:
 	std::vector<Process> stampEntries;
