@@ -7,13 +7,13 @@ public:
 	~Process();
 
 	//getters
-	int getPID() const { return pid; }
-	int getArrivalTime() const { return arrival_time; }
-	int getBurstTime() const { return burst_time; }
-	int getRemainingTime() const { return remaining_time; }
-	int getPriority() const { return priority; }
-	int getStart() const { return t_start; }
-	int getEnd() const { return t_end; }
+	int getPID()			const { return pid; }
+	int getArrivalTime()	const { return arrival_time; }
+	int getBurstTime()		const { return burst_time; }
+	int getRemainingTime()	const { return remaining_time; }
+	int getPriority()		const { return priority; }
+	int getStart()			const { return t_start; }
+	int getEnd()			const { return t_end; }
 	
 
 	//setters

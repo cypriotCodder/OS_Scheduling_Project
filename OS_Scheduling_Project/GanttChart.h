@@ -18,6 +18,6 @@ public:
 	
 
 private:
-	std::vector<GanttChart> stampEntries;
+	std::vector<Process> stampEntries;
 };
 

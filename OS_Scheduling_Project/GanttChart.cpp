@@ -19,7 +19,7 @@ void GanttChart::stamp(Process p) const
 	Process newProcess_entry(p.getPID(), p.getArrivalTime(), p.getBurstTime(), p.getRemainingTime(), p.getPriority());
 	newProcess_entry.setStart(p.getStart());
 	newProcess_entry.setEnd(p.getEnd());
-	//stampEntries.push_back(newProcess_entry); //TODO
+	//this->stampEntries.push_back(newProcess_entry); //TODO
 }
 
 void GanttChart::print() const
