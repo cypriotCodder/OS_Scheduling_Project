@@ -54,7 +54,10 @@ void SJF_Scheduler::run(std::vector<Process> waitingQ) const
 		cout << "End Time: " << currentProcess.getEnd() << endl;
 		cout << "Waiting Time: " << currentProcess.getWaitingTime() << endl;
 		cout << "Turnaround Time: " << currentProcess.getTurnaroundTime() << "\n" << endl;
+
 	}
+	cout << "===================== SJF ALGORITHM =====================\n";
+	ganttChart.print();
 }
 
 float SJF_Scheduler::getAverageTurnaroundTime(std::vector<Process> processes) const
