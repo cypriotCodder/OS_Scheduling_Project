@@ -19,7 +19,7 @@ TaskParser::~TaskParser()
 
 vector<Process> TaskParser::parseFile(const std::string& filename) const
 {
-	ifstream inputFile("Tasks.txt");
+	ifstream inputFile("schedule.txt");
 
 	if (!inputFile.is_open()) throw runtime_error("Could not open file");
 	vector<Process> processes;

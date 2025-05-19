@@ -11,6 +11,8 @@ public:
 	int getArrivalTime()	const { return arrival_time; }
 	int getBurstTime()		const { return burst_time; }
 	int getRemainingTime()	const { return remaining_time; }
+	int getWaitingTime()	const { return waiting_time; }
+	int getTurnaroundTime()	const { return turnaround_time; }
 	int getPriority()		const { return priority; }
 	int getStart()			const { return t_start; }
 	int getEnd()			const { return t_end; }
@@ -27,6 +29,8 @@ private:
 	int burst_time;
 	int priority;
 	int remaining_time;
+	int waiting_time;
+	int turnaround_time;
 
 	int t_start;
 	int t_end;

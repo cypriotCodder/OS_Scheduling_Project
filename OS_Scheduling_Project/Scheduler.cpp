@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include "Process.h"
+#include "FCFS_Scheduler.h"
 
 Scheduler::Scheduler(std::vector<Process> processes)
 {
@@ -14,6 +15,8 @@ Scheduler::~Scheduler()
 
 void Scheduler::run() const
 {
+	//Run FCFS Scheduler
+	fcfs_Scheduler.run(this->waitingQueue); //TODO: Implement the run function in FCFS_Scheduler
 }
 
 
