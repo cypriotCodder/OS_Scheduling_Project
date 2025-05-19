@@ -22,6 +22,7 @@
     <ClCompile Include="Driver.cpp" />
     <ClCompile Include="FCFS_Scheduler.cpp" />
     <ClCompile Include="GanttChart.cpp" />
+    <ClCompile Include="Priority_Scheduling.cpp" />
     <ClCompile Include="Process.cpp" />
     <ClCompile Include="Scheduler.cpp" />
     <ClCompile Include="SJF_Scheduler.cpp" />
@@ -30,6 +31,7 @@
   <ItemGroup>
     <ClInclude Include="FCFS_Scheduler.h" />
     <ClInclude Include="GanttChart.h" />
+    <ClInclude Include="Priority_Scheduling.h" />
     <ClInclude Include="Process.h" />
     <ClInclude Include="Scheduler.h" />
     <ClInclude Include="SJF_Scheduler.h" />

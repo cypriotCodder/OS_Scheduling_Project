@@ -3,14 +3,15 @@
 #include "Process.h"
 #include <iostream>
 
-class FCFS_Scheduler
+class Priority_Scheduling
 {
 public:
-	FCFS_Scheduler();
-	~FCFS_Scheduler();
+	Priority_Scheduling();
+	~Priority_Scheduling();
 	void run(std::vector<Process> waitingQ) const;
 	float getAverageTurnaroundTime(std::vector<Process> processes)	const;
 	float getAverageWaitingTime(std::vector<Process> processes)		const;
 private:
+
 };
 

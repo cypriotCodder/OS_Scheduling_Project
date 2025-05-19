@@ -2,7 +2,6 @@
 #include <vector>
 #include "Process.h"
 #include <iostream>
-#include "GanttChart.h"
 
 class SJF_Scheduler
 {
