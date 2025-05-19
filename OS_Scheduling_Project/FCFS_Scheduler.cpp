@@ -17,7 +17,7 @@ FCFS_Scheduler::~FCFS_Scheduler()
 
 void FCFS_Scheduler::run(vector<Process> waitingQ) const
 {
-	GanttChart ganttChart;	// Create a Gantt chart object
+	GanttChart ganttChart;							// Create a Gantt chart object
 	float time = 0;
 	assert(!waitingQ.empty() && "Waiting queue is empty");
 	assert(time >= 0 && "Time must be non-negative");
@@ -46,7 +46,7 @@ void FCFS_Scheduler::run(vector<Process> waitingQ) const
 		cout << "Turnaround Time: " << currentProcess.getTurnaroundTime() << "\n" << endl;
 
 	}
-		// Print the Gantt chart
+	// Print the Gantt chart
 	cout << "===================== FCFS ALGORITHM =====================\n";
 	ganttChart.print();
 }

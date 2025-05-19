@@ -24,6 +24,7 @@
     <ClCompile Include="GanttChart.cpp" />
     <ClCompile Include="Process.cpp" />
     <ClCompile Include="Scheduler.cpp" />
+    <ClCompile Include="SJF_Scheduler.cpp" />
     <ClCompile Include="TaskParser.cpp" />
   </ItemGroup>
   <ItemGroup>

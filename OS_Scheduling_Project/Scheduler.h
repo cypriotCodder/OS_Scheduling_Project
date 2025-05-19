@@ -2,6 +2,7 @@
 #include <vector>
 #include "Process.h"
 #include "FCFS_Scheduler.h"
+#include "SJF_Scheduler.h"
 
 
 class Scheduler
@@ -21,7 +22,7 @@ protected:
 	std::vector<Process> finishedQueue;	// Pointer to the finished queue
 
 	FCFS_Scheduler fcfs_Scheduler;				// FCFS scheduler object
-	//SJF_Scheduler sjfScheduler;				// SJF scheduler object
+	SJF_Scheduler sjfScheduler;				// SJF scheduler object
 	//RR_Scheduler rrScheduler;					// RR scheduler object
 	//Priority_Scheduler priorityScheduler;		// Priority scheduler object
 	//Priorty_RR_Scheduler priorityRRScheduler; // Priority RR scheduler object

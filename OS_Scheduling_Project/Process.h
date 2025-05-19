@@ -31,15 +31,15 @@ public:
 
 private:
 	int pid;
-	int arrival_time;
-	int burst_time;
 	int priority;
-	int remaining_time;
-	int waiting_time;
-	int turnaround_time;
+	float arrival_time;
+	float burst_time;
+	float remaining_time;
+	float waiting_time;
+	float turnaround_time;
 
-	int t_start;
-	int t_end;
+	float t_start;
+	float t_end;
 };
 
 
