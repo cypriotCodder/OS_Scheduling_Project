@@ -3,7 +3,7 @@
 class Process
 {
 public:
-	Process(int pid, int arrivalTime, int burstTime, int remainingTime, int priority=0);
+	Process(int pid, int arrivalTime, int burstTime, int priority=0);
 	~Process();
 
 	//getters
@@ -19,9 +19,11 @@ public:
 	
 
 	//setters
-	void remainingUpdate(int delta);
+	void remainingTimeUpdate(int delta);
 	void setStart(int t_start) { this->t_start = t_start; }
 	void setEnd(int t_end) { this->t_end = t_end; }
+	void setWaitingTime(int waiting_time) { this->waiting_time = waiting_time; }
+	void setTurnaroundTime(int turnaround_time) { this->turnaround_time = turnaround_time; }
 
 private:
 	int pid;

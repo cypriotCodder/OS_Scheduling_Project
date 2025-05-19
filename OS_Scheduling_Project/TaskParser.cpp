@@ -40,7 +40,7 @@ vector<Process> TaskParser::parseFile(const std::string& filename) const
 		{
 			priority = stoi(pri);
 			burstTime = stoi(bt);
-			Process process(pid, 0/*arrivalTime = 0 by default*/, burstTime, burstTime, priority);
+			Process process(pid, 0/*arrivalTime = 0 by default*/, burstTime, priority);
 			pid = processes.size() + 1 + 1; // Increment PID for each new process
 			processes.push_back(process);
 			cout << "Parsed Process PID: " << process.getPID() << " CPU Burst: " << process.getBurstTime() << endl;
