@@ -30,6 +30,14 @@ void RR_Scheduler::run(std::vector<Process> waitingQ) const
         // take the front process
         Process p = processQueue.front();
         processQueue.pop_front();
+		//@TODO
+
+		if (p.getBurstTime() > tQuantum) {
+			// Process will run for the time quantum
+		}
+		else {
+			// Process will finish its execution
+		}
 
     }
 	std::cout << "===================== ROUND ROBIN ALGORITHM =====================\n";
