@@ -31,8 +31,10 @@
   <ItemGroup>
     <ClInclude Include="FCFS_Scheduler.h" />
     <ClInclude Include="GanttChart.h" />
+    <ClInclude Include="PriorityRR_Scheduler.h" />
     <ClInclude Include="Priority_Scheduler.h" />
     <ClInclude Include="Process.h" />
+    <ClInclude Include="RR_Scheduler.h" />
     <ClInclude Include="Scheduler.h" />
     <ClInclude Include="SJF_Scheduler.h" />
     <ClInclude Include="TaskParser.h" />
