@@ -24,25 +24,34 @@ vector<Process> TaskParser::parseFile(const std::string& filename)
 	if (!inputFile.is_open()) throw runtime_error("Could not open file");
 	vector<Process> processes;
 	string line;
+	int pid = 1; // Initialize PID counter
 
-	while (getline(cin, line)) {
+	while (getline(inputFile, line)) {
 		istringstream iss(line);
-		int pid, arrivalTime, burstTime, remainingTime, priority;
-		if (!(iss >> pid >> arrivalTime >> burstTime >> remainingTime >> priority)) {
-			cerr << "Error parsing line: " << line << endl;
-			continue; // Skip this line if parsing fails
+		string tName, pri, bt;				// Temporary strings to hold the parsed values
+		int priority = 0, burstTime = 0;	
+
+		getline(iss, tName, ' '); //Read until the first space
+		getline(iss, pri, ' ');  // Read until the second space
+		getline(iss, bt, ' ');   // Read until the third of the line
+
+		//assert the parsing of the strings
+		try
+		{
+			priority = stoi(pri);
+			burstTime = stoi(bt);
+			Process process(pid, 0, burstTime, burstTime, priority);
+			pid = processes.size() + 1 + 1; // Increment PID for each new process
+			processes.push_back(process);
+			cout << "Parsed Process PID: " << process.getPID() << " CPU Burst: " << process.getBurstTime() << endl;
 		}
-		Process process(pid, arrivalTime, burstTime, remainingTime, priority);
-		processes.push_back(process);
-		cout << "Parsed Process: " << process.getPID() << endl;
+		catch (const std::exception&)
+		{
+			cerr << "Error parsing line: " << line << endl;
+		}
 
 	}
 	return processes;
-}
-
-std::vector<Process> TaskParser::parseLine(const std::string& line)
-{
-	return std::vector<Process>();
 }
 
 

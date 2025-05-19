@@ -1,5 +1,6 @@
 /** */
 #include <iostream>
+#include "TaskParser.h"
 
 using namespace std;
 
@@ -8,6 +9,11 @@ int main()
 	cout << "This is a simple OS Scheduling Project.\n";
 	cout << "This project will implement various scheduling algorithms.\n";
 	cout << "The algorithms are implemented in C++.\n";
+
+	//to test the TaskParser
+	TaskParser taskParser;
+	vector<Process> processes = taskParser.parseFile("Tasks.txt");
+	cout << "Parsed " << processes.size() << " processes from the file.\n";
 
 	return 0;
 }

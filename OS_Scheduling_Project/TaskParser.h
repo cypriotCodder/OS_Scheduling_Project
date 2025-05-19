@@ -13,6 +13,6 @@ public:
 	std::vector<Process> parseFile(const std::string& filename);
 
 private:
-	std::vector<Process> parseLine(const std::string& line);
+	
 };
 
