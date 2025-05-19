@@ -36,6 +36,23 @@ void Priority_Scheduling::run(std::vector<Process> waitingQ) const
 		waitingQ.erase(it);
 	}
 
+	// Run the processes in sorted order
+	for (auto& currentProcess : sortedProcesses) {
+		currentProcess.setStart(time);									// Set start time to 0 for simplicity
+		currentProcess.setEnd(time + currentProcess.getBurstTime());	// Set end time to burst time
+		time += currentProcess.getBurstTime();							// Increment the time by the burst time of the process
+		// Calculate waiting time and turnaround time
+		currentProcess.calculateWaitingTime(time);
+		currentProcess.calculateTurnaroundTime(time);
+		// Add the process to the Gantt chart
+		ganttChart.stamp(currentProcess);
+		// Print the process details
+		cout << "Running Process PID: " << currentProcess.getPID() << endl;
+		cout << "Start Time: " << currentProcess.getStart() << endl;
+		cout << "End Time: " << currentProcess.getEnd() << endl;
+		cout << "Waiting Time: " << currentProcess.getWaitingTime() << endl;
+		cout << "Turnaround Time: " << currentProcess.getTurnaroundTime() << "\n" << endl;
+	}
 	
 }
 
