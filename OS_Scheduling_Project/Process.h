@@ -25,6 +25,11 @@ public:
 	void setWaitingTime(int waiting_time) { this->waiting_time = waiting_time; }
 	void setTurnaroundTime(int turnaround_time) { this->turnaround_time = turnaround_time; }
 
+	//calculating waiting time
+	void calculateWaitingTime(int current_time);
+	//calculating turnaround time
+	void calculateTurnaroundTime(int current_time);
+
 private:
 	int pid;
 	int arrival_time;
