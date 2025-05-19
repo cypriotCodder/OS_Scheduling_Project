@@ -51,6 +51,26 @@ void FCFS_Scheduler::run(vector<Process> waitingQ) const
 	ganttChart.print();
 }
 
+float FCFS_Scheduler::getAverageTurnaroundTime(std::vector<Process> processes) const
+{
+	// Calculate the average turnaround time
+	float totalTurnaroundTime = 0.0f;
+	for (const auto& process : processes) {
+		totalTurnaroundTime += process.getTurnaroundTime();
+	}
+	return totalTurnaroundTime /= processes.size();
+}
+
+float FCFS_Scheduler::getAverageWaitingTime(std::vector<Process> processes) const
+{
+	// Calculate the average waiting time
+	float totalWaitingTime = 0.0f;
+	for (const auto& process : processes) {
+		totalWaitingTime += process.getWaitingTime();
+	}
+	return totalWaitingTime /= processes.size();
+}
+
 
 
 

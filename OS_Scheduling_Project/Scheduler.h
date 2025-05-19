@@ -10,10 +10,9 @@ public:
 	Scheduler(std::vector<Process> processes);
 	~Scheduler();
 
-	void run()							const;
-	void printProcesses()				const;
-	float getAverageTurnaroundTime()	const;
-	float getAverageWaitingTime()		const;
+	void run()														const;
+	void printProcesses()											const;
+	void printStats()												const;
 
 
 protected:
