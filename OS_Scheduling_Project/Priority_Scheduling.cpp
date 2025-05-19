@@ -18,6 +18,7 @@ Priority_Scheduling::~Priority_Scheduling()
 void Priority_Scheduling::run(std::vector<Process> waitingQ) const
 {
 	GanttChart ganttChart;							
+	vector<Process> sortedProcesses;
 	float time = 0;
 	assert(!waitingQ.empty() && "Waiting queue is empty");
 	assert(time >= 0 && "Time must be non-negative");
@@ -31,7 +32,11 @@ void Priority_Scheduling::run(std::vector<Process> waitingQ) const
 				return a.getPriority() < b.getPriority();
 			}
 		);
+		sortedProcesses.push_back(*it);
+		waitingQ.erase(it);
 	}
+
+	
 }
 
 float Priority_Scheduling::getAverageTurnaroundTime(std::vector<Process> processes) const
