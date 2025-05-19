@@ -29,7 +29,7 @@ void Priority_Scheduler::run(std::vector<Process> waitingQ) const
 			waitingQ.begin(),
 			waitingQ.end(),
 			[](Process& a, Process& b) {
-				return a.getPriority() < b.getPriority();
+				return a.getPriority() > b.getPriority();
 			}
 		);
 		sortedProcesses.push_back(*it);
