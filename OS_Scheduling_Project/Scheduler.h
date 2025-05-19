@@ -10,6 +10,14 @@ public:
 	Scheduler(std::vector<Process> processes);
 	~Scheduler();
 
+	void run() const;
+	void printGanttChart() const;
+	void printProcesses() const;
+	void printAverageTurnaroundTime() const;
+	void printAverageWaitingTime() const;
+	void printAverageResponseTime() const;
+
+
 private:
 
 };

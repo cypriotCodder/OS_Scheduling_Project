@@ -40,4 +40,9 @@ vector<Process> TaskParser::parseFile(const std::string& filename)
 	return processes;
 }
 
+std::vector<Process> TaskParser::parseLine(const std::string& line)
+{
+	return std::vector<Process>();
+}
+
 
