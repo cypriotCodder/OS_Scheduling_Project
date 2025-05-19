@@ -13,5 +13,5 @@ public:
 	float getAverageTurnaroundTime(std::vector<Process> processes)	const;
 	float getAverageWaitingTime(std::vector<Process> processes)		const;
 private:
-
+	float tQuantum = 20; // Time quantum for Round Robin scheduling
 };
