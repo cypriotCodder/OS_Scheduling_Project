@@ -24,6 +24,7 @@
     <ClCompile Include="GanttChart.cpp" />
     <ClCompile Include="Process.cpp" />
     <ClCompile Include="Scheduler.cpp" />
+    <ClCompile Include="TaskParser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FCFS_Scheduler.h" />
@@ -31,6 +32,10 @@
     <ClInclude Include="Process.h" />
     <ClInclude Include="Scheduler.h" />
     <ClInclude Include="SJF_Scheduler.h" />
+    <ClInclude Include="TaskParser.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Tasks.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
