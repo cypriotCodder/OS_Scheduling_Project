@@ -4,8 +4,9 @@
 #include "Process.h"
 #include <cassert>
 #include "GanttChart.h"
+#include <deque>
 
-RR_Scheduler::RR_Scheduler(float tQ=20)
+RR_Scheduler::RR_Scheduler(float tQ)
 {
 	this->tQuantum= tQ; // Initialize the time this->tQuantum for Round Robin scheduling
 }
@@ -17,36 +18,20 @@ RR_Scheduler::~RR_Scheduler()
 void RR_Scheduler::run(std::vector<Process> waitingQ) const
 {
 	GanttChart ganttChart;
-	std::vector<Process> sortedProcesses;
 	float time = 0;
 	assert(!waitingQ.empty() && "Waiting queue is empty");
 	assert(time >= 0 && "Time must be non-negative");
+	
+	// Create a deque to hold the processes in the waiting queue
+	std::deque<Process> processQueue(waitingQ.begin(), waitingQ.end());
+
 	// Run the processes in round-robin fashion
-	while (!waitingQ.empty()) {
-		for (auto it = waitingQ.begin(); it != waitingQ.end();) {
-			if (it->getBurstTime() > this->tQuantum) {
-				it->setStart(time);
-				it->setEnd(time + this->tQuantum);
-				time += this->tQuantum;
-				it->remainingTimeUpdate(it->getBurstTime() - this->tQuantum);
-				ganttChart.stamp(*it);
-				std::cout << "Running Process PID: " << it->getPID() << std::endl;
-				std::cout << "Start Time: " << it->getStart() << std::endl;
-				std::cout << "End Time: " << it->getEnd() << std::endl;
-			}
-			else {
-				it->setStart(time);
-				it->setEnd(time + it->getBurstTime());
-				time += it->getBurstTime();
-				ganttChart.stamp(*it);
-				std::cout << "Running Process PID: " << it->getPID() << std::endl;
-				std::cout << "Start Time: " << it->getStart() << std::endl;
-				std::cout << "End Time: " << it->getEnd() << std::endl;
-				waitingQ.erase(it);
-			}
-			++it;
-		}
-	}
+    while (!processQueue.empty()) {
+        // take the front process
+        Process p = processQueue.front();
+        processQueue.pop_front();
+
+    }
 	std::cout << "===================== ROUND ROBIN ALGORITHM =====================\n";
 	ganttChart.print();
 }
