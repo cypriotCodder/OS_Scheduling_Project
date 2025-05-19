@@ -9,6 +9,9 @@ public:
 	RR_Scheduler();
 	~RR_Scheduler();
 
+	void run(std::vector<Process> waitingQ) const;
+	float getAverageTurnaroundTime(std::vector<Process> processes)	const;
+	float getAverageWaitingTime(std::vector<Process> processes)		const;
 private:
 
 };
