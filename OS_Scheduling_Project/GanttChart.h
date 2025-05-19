@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 
 class GanttChart
 {
@@ -12,7 +13,9 @@ public:
 	//Function to print the Gantt chart
 	void print() const;
 
-private:
+	
 
+private:
+	vector<GanttChart> stampEntries;
 };
 
