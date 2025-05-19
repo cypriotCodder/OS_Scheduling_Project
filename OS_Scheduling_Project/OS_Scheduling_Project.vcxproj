@@ -20,9 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Driver.cpp" />
-    <ClCompile Include="FCFS_Scheduler.cpp" />
-    <ClCompile Include="GanttChart.cpp" />
-    <ClCompile Include="Process.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FCFS_Scheduler.h" />

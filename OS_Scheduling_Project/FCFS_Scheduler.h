@@ -10,3 +10,10 @@ private:
 
 };
 
+FCFS_Scheduler::FCFS_Scheduler()
+{
+}
+
+FCFS_Scheduler::~FCFS_Scheduler()
+{
+}
