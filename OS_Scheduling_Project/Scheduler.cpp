@@ -19,6 +19,7 @@ void Scheduler::run()				const
 	sjfScheduler.run(this->waitingQueue); 
 	priorityScheduler.run(this->waitingQueue);
 	rrScheduler.run(this->waitingQueue);
+	priorityRRScheduler.run(this->waitingQueue); // Run the Priority RR scheduler
 }
 
 void Scheduler::printProcesses()	const

@@ -31,7 +31,6 @@ void RR_Scheduler::run(std::vector<Process> waitingQ) const
         // take the front process
         Process p = processQueue.front();
         processQueue.pop_front();
-		//@TODO
 
 		if (p.getRemainingTime() > this->tQuantum) {
 			// Process will run for the time quantum

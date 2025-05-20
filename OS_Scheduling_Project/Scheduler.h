@@ -5,6 +5,7 @@
 #include "SJF_Scheduler.h"
 #include "Priority_Scheduler.h"
 #include "RR_Scheduler.h"
+#include "PriorityRR_Scheduler.h"
 
 
 class Scheduler
@@ -27,6 +28,6 @@ protected:
 	SJF_Scheduler sjfScheduler;				// SJF scheduler object
 	RR_Scheduler rrScheduler = RR_Scheduler(20);					// RR scheduler object
 	Priority_Scheduler priorityScheduler;		// Priority scheduler object
-	//Priorty_RR_Scheduler priorityRRScheduler; // Priority RR scheduler object
+	PriorityRR_Scheduler priorityRRScheduler = PriorityRR_Scheduler(20); // Priority RR scheduler object
 };
 
