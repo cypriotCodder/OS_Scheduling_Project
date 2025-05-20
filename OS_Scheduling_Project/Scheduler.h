@@ -7,15 +7,51 @@
 #include "RR_Scheduler.h"
 #include "PriorityRR_Scheduler.h"
 
-
+/**
+ * @brief Scheduler class for managing different scheduling algorithms.
+ *
+ * This class coordinates multiple scheduling algorithms including FCFS, SJF,
+ * Priority, Round Robin (RR), and Priority Round Robin (PRR). It maintains
+ * queues for ready, waiting, and finished processes, and delegates execution
+ * to respective scheduler objects.
+ */
 class Scheduler
 {
 public:
+	/**
+	 * @brief Constructor to initialize Scheduler with a vector of processes.
+	 *
+	 * @param processes Vector of processes to be scheduled.
+	 */
 	Scheduler(std::vector<Process> processes);
+
+	/**
+	 * @brief Destructor for Scheduler class.
+	 */
 	~Scheduler();
 
+	/**
+	 * @brief Executes all scheduling algorithms.
+	 *
+	 * This method runs each scheduling algorithm sequentially on the set of processes.
+	 * Each algorithm calculates and updates process times and manages process queues.
+	 */
 	void run()														const;
+
+	/**
+	 * @brief Prints the list of processes in the scheduler.
+	 *
+	 * This method prints details of all processes currently in the scheduler,
+	 * including their IDs, burst times, priorities, etc.
+	 */
 	void printProcesses()											const;
+
+	/**
+	 * @brief Prints statistics of the scheduling algorithms.
+	 *
+	 * This method prints statistics such as average waiting time and average
+	 * turnaround time for each scheduling algorithm used in the scheduler.
+	 */
 	void printStats()												const;
 
 
