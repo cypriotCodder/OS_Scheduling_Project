@@ -10,14 +10,31 @@
 
 using namespace std;
 
+/**
+ * @brief Constructor for TaskParser class.
+ *
+ * Initializes a TaskParser object.
+ */
 TaskParser::TaskParser()
 {
 }
 
+/**
+ * @brief Destructor for TaskParser class.
+ *
+ * Cleans up resources used by TaskParser object.
+ */
 TaskParser::~TaskParser()
 {
 }
 
+/**
+ * @brief Parses a text file to create a vector of Process objects.
+ *
+ * @param filename The name of the file to be parsed.
+ * @return A vector of Process objects parsed from the file.
+ * @throws runtime_error if the file cannot be opened.
+ */
 vector<Process> TaskParser::parseFile(const std::string& filename) const
 {
 	ifstream inputFile("schedule.txt");
