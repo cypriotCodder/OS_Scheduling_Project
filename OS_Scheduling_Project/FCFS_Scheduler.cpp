@@ -34,6 +34,7 @@ void FCFS_Scheduler::run(vector<Process> waitingQ) const
 {
     GanttChart ganttChart;                  // Create a Gantt chart object
     float time = 0;                         // Current time
+    vector<Process> tempList = waitingQ;    // hold for stats
 
     assert(!waitingQ.empty() && "Waiting queue is empty");
     assert(time >= 0 && "Time must be non-negative");
@@ -54,6 +55,7 @@ void FCFS_Scheduler::run(vector<Process> waitingQ) const
 
         // Add the process to the Gantt chart
         ganttChart.stamp(currentProcess);
+		tempList.push_back(currentProcess); // Add process to tempList for stats
 
         // Print the process details
         cout << "Running Process PID: " << currentProcess.getPID() << endl;
@@ -64,8 +66,12 @@ void FCFS_Scheduler::run(vector<Process> waitingQ) const
     }
 
     // Print the Gantt chart
-    cout << "===================== FCFS ALGORITHM =====================\n";
     ganttChart.print();
+    std::cout << "STATISTICS:\n";
+    std::cout << "Average Turnaround Time: " << getAverageTurnaroundTime(tempList) << "\n";
+    std::cout << "Average Waiting Time: " << getAverageWaitingTime(tempList) << "\n\n";
+
+	cout << "===================== END OF FCFS ALGORITHM =====================\n";
 }
 
 /**

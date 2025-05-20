@@ -35,6 +35,8 @@ void Priority_Scheduler::run(std::vector<Process> waitingQ) const
 {
     GanttChart ganttChart;              // Create a Gantt chart object
     vector<Process> sortedProcesses;    // Vector to hold processes sorted by priority
+    vector<Process> tempList = waitingQ; // hold for stats
+
     float time = 0;                     // Current time
 
     assert(!waitingQ.empty() && "Waiting queue is empty");
@@ -67,6 +69,7 @@ void Priority_Scheduler::run(std::vector<Process> waitingQ) const
 
         // Add the process to the Gantt chart
         ganttChart.stamp(currentProcess);
+		tempList.push_back(currentProcess); // Add process to tempList for stats
 
         // Print the process details
         cout << "Running Process PID: " << currentProcess.getPID() << endl;
@@ -77,8 +80,12 @@ void Priority_Scheduler::run(std::vector<Process> waitingQ) const
     }
 
     // Print the Gantt chart
-    cout << "===================== PRIORITY ALGORITHM =====================\n";
     ganttChart.print();
+    std::cout << "STATISTICS:\n";
+    std::cout << "Average Turnaround Time: " << getAverageTurnaroundTime(tempList) << "\n";
+    std::cout << "Average Waiting Time: " << getAverageWaitingTime(tempList) << "\n\n";
+
+	cout << "===================== END OF PRIORITY ALGORITHM =====================\n";
 }
 
 /**

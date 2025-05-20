@@ -36,14 +36,15 @@ RR_Scheduler::~RR_Scheduler()
  *
  * @param waitingQ Vector of processes in the waiting queue.
  */
-void RR_Scheduler::run(std::vector<Process> waitingQ) const
+void RR_Scheduler::run(vector<Process> waitingQ) const
 {
     GanttChart ganttChart; // Gantt chart to visualize scheduling
 
     float time = 0;                                                     // Current time
     assert(!waitingQ.empty() && "Waiting queue is empty");
 
-    std::deque<Process> processQueue(waitingQ.begin(), waitingQ.end()); // Deque to hold processes
+    deque<Process> processQueue(waitingQ.begin(), waitingQ.end()); // Deque to hold processes
+    vector<Process> tempList = waitingQ; // hold for stats
 
     // Run the processes in round-robin fashion
     while (!processQueue.empty()) {
@@ -65,6 +66,7 @@ void RR_Scheduler::run(std::vector<Process> waitingQ) const
             p.calculateTurnaroundTime(time);
             ganttChart.stamp(p);
             processQueue.push_back(p);              // Add process back to queue
+			tempList.push_back(p); // Add process to tempList for stats
 
             // Print process details
             cout << "Running Process PID: " << p.getPID() << endl;
@@ -84,6 +86,7 @@ void RR_Scheduler::run(std::vector<Process> waitingQ) const
             p.calculateWaitingTime(time);
             p.calculateTurnaroundTime(time);
             ganttChart.stamp(p);
+            tempList.push_back(p); // Add process to tempList for stats
 
             // Print process details
             cout << "Running Process PID: " << p.getPID() << endl;
@@ -95,8 +98,12 @@ void RR_Scheduler::run(std::vector<Process> waitingQ) const
     }
 
     // Print Gantt chart for visualization
-    std::cout << "===================== ROUND ROBIN ALGORITHM =====================\n";
     ganttChart.print();
+    std::cout << "STATISTICS:\n";
+    std::cout << "Average Turnaround Time: " << getAverageTurnaroundTime(ganttChart.getStampEntries()) << "\n";
+    std::cout << "Average Waiting Time: " << getAverageWaitingTime(ganttChart.getStampEntries()) << "\n\n";
+
+	cout << "========================== END OF ROUND ROBIN ALGORITHM ==========================\n";
 }
 
 /**

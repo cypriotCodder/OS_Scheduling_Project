@@ -32,18 +32,23 @@ Scheduler::~Scheduler()
 void Scheduler::run() const
 {
     // Run FCFS Scheduler
+	std::cout << "===================== FCFS ALGORITHM =====================\n";
     fcfs_Scheduler.run(this->waitingQueue);
 
     // Run SJF Scheduler
+	std::cout << "===================== SJF ALGORITHM =====================\n";
     sjfScheduler.run(this->waitingQueue);
 
     // Run Priority Scheduler
+	std::cout << "===================== PRIORITY ALGORITHM =====================\n";
     priorityScheduler.run(this->waitingQueue);
 
     // Run Round Robin Scheduler
+	std::cout << "===================== ROUND ROBIN ALGORITHM =====================\n";
     rrScheduler.run(this->waitingQueue);
 
     // Run Priority Round Robin Scheduler
+    std::cout << "===================== PRIORITY ROUND ROBIN ALGORITHM =====================\n";
     priorityRRScheduler.run(this->waitingQueue);
 }
 

@@ -18,7 +18,7 @@ public:
 	//Setter
 	void setStampEntries(std::vector<Process> stampEntries) { this->stampEntries = stampEntries; }
 	//Getter for the stamp entries
-	const std::vector<Process> getStampEntries() const { return stampEntries; }
+	const std::vector<Process> getStampEntries() const { return this->stampEntries; }
 
 private:
 	std::vector<Process> stampEntries;
