@@ -71,11 +71,11 @@ void SJF_Scheduler::run(std::vector<Process> waitingQ) const
 		tempList.push_back(currentProcess); // Add process to tempList for stats
 
         // Print the process details
-        cout << "Running Process PID: " << currentProcess.getPID() << endl;
+        /*cout << "Running Process PID: " << currentProcess.getPID() << endl;
         cout << "Start Time: " << currentProcess.getStart() << endl;
         cout << "End Time: " << currentProcess.getEnd() << endl;
         cout << "Waiting Time: " << currentProcess.getWaitingTime() << endl;
-        cout << "Turnaround Time: " << currentProcess.getTurnaroundTime() << "\n" << endl;
+        cout << "Turnaround Time: " << currentProcess.getTurnaroundTime() << "\n" << endl;*/
     }
 
     // Print the Gantt chart

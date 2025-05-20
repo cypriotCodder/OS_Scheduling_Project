@@ -61,11 +61,11 @@ void PriorityRR_Scheduler::run(std::vector<Process> waitingQ) const
             sortedProcessQ.push_front(p); // Add process back to queue
 
             // Print process details
-            cout << "Running Process PID: " << p.getPID() << endl;
+            /*cout << "Running Process PID: " << p.getPID() << endl;
             cout << "Start Time: " << p.getStart() << endl;
             cout << "End Time: " << p.getEnd() << endl;
             cout << "Waiting Time: " << p.getWaitingTime() << endl;
-            cout << "Turnaround Time: " << p.getTurnaroundTime() << "\n" << endl;
+            cout << "Turnaround Time: " << p.getTurnaroundTime() << "\n" << endl;*/
         }
         else {
             // Process finishes execution
@@ -81,11 +81,11 @@ void PriorityRR_Scheduler::run(std::vector<Process> waitingQ) const
             tempList.push_back(p); // Add process to tempList for stats
 
             // Print process details
-            cout << "\nRunning Process PID: " << p.getPID() << endl;
+            /*cout << "\nRunning Process PID: " << p.getPID() << endl;
             cout << "Start Time: " << p.getStart() << endl;
             cout << "End Time: " << p.getEnd() << endl;
             cout << "Waiting Time: " << p.getWaitingTime() << endl;
-            cout << "Turnaround Time: " << p.getTurnaroundTime() << "\n" << endl;
+            cout << "Turnaround Time: " << p.getTurnaroundTime() << "\n" << endl;*/
         }
     }
 

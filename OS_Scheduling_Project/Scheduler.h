@@ -38,6 +38,8 @@ public:
 	 */
 	void run()														const;
 
+	void printProcesses() const;
+
 protected:
 	std::vector<Process> waitingQueue;	// Pointer to the waiting queue
 

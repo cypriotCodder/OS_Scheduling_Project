@@ -47,35 +47,55 @@ void Scheduler::run() const
         // Run FCFS Scheduler
         if(menuChoice == 1){
 			system("cls");
+            std::cout << "\033[37m";
             std::cout << "\n===================== FCFS ALGORITHM =====================\n";
+			printProcesses();
             fcfs_Scheduler.run(this->waitingQueue);
         }
         // Run SJF Scheduler
         if (menuChoice == 2) {
             system("cls");
+            std::cout << "\033[34m";
             std::cout << "\n===================== SJF ALGORITHM =====================\n";
+			printProcesses();
             sjfScheduler.run(this->waitingQueue);
         }
         // Run Priority Scheduler
         if (menuChoice == 3) {
 			system("cls");
+            std::cout << "\033[36m";
             std::cout << "\n===================== PRIORITY ALGORITHM =====================\n";
+			printProcesses();
             priorityScheduler.run(this->waitingQueue);
         }
         // Run Round Robin Scheduler
         if (menuChoice == 4) {
 			system("cls");
+            std::cout << "\033[33m";
             std::cout << "\n===================== ROUND ROBIN ALGORITHM =====================\n";
+			printProcesses();
             rrScheduler.run(this->waitingQueue);
         }
         // Run Priority Round Robin Scheduler
         if (menuChoice == 5) {
 			system("cls");
+            std::cout << "\033[32m";
             std::cout << "\n===================== PRIORITY ROUND ROBIN ALGORITHM =====================\n";
+			printProcesses();
             priorityRRScheduler.run(this->waitingQueue);
         }
 		// Exit the program
     }
+}
+
+void Scheduler::printProcesses() const
+{
+	std::cout << "PROCESSES:\n";
+	for (const auto& process : waitingQueue) {
+		std::cout << "PID: " << process.getPID() << ", Arrival Time: " << process.getArrivalTime()
+			<< ", Burst Time: " << process.getBurstTime() << ", Priority: " << process.getPriority() << "\n";
+	}
+    std::cout << "\n";
 }
 
 
