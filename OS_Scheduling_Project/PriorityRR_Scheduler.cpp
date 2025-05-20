@@ -61,10 +61,10 @@ void PriorityRR_Scheduler::run(std::vector<Process> waitingQ) const
 
             // Print process details
             cout << "Running Process PID: " << p.getPID() << endl;
-            cout << "Start Time: " << p.getStart() << endl;
+            /*cout << "Start Time: " << p.getStart() << endl;
             cout << "End Time: " << p.getEnd() << endl;
             cout << "Waiting Time: " << p.getWaitingTime() << endl;
-            cout << "Turnaround Time: " << p.getTurnaroundTime() << "\n" << endl;
+            cout << "Turnaround Time: " << p.getTurnaroundTime() << "\n" << endl;*/
         }
         else {
             // Process finishes execution
@@ -79,9 +79,9 @@ void PriorityRR_Scheduler::run(std::vector<Process> waitingQ) const
             ganttChart.stamp(p);
 
             // Print process details
-            cout << "Running Process PID: " << p.getPID() << endl;
-            cout << "Start Time: " << p.getStart() << endl;
-            cout << "End Time: " << p.getEnd() << endl;
+            cout << "\nRunning Process PID: " << p.getPID() << endl;
+            /*cout << "Start Time: " << p.getStart() << endl;
+            cout << "End Time: " << p.getEnd() << endl;*/
             cout << "Waiting Time: " << p.getWaitingTime() << endl;
             cout << "Turnaround Time: " << p.getTurnaroundTime() << "\n" << endl;
         }
@@ -90,6 +90,9 @@ void PriorityRR_Scheduler::run(std::vector<Process> waitingQ) const
     // Print Gantt chart for visualization
     std::cout << "===================== PRIORITY ROUND ROBIN ALGORITHM =====================\n";
     ganttChart.print();
+	std::cout << "STATISTICS:\n";
+	std::cout << "Average Turnaround Time: " << getAverageTurnaroundTime(ganttChart.getStampEntries()) << "\n";
+	std::cout << "Average Waiting Time: " << getAverageWaitingTime(ganttChart.getStampEntries()) << "\n";
 }
 
 /**
