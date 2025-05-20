@@ -21,7 +21,6 @@ void Priority_Scheduler::run(std::vector<Process> waitingQ) const
 	vector<Process> sortedProcesses;
 	float time = 0;
 	assert(!waitingQ.empty() && "Waiting queue is empty");
-	assert(time >= 0 && "Time must be non-negative");
 
 	// Sort the processes based on priority
 	while (!waitingQ.empty()) {
@@ -38,6 +37,8 @@ void Priority_Scheduler::run(std::vector<Process> waitingQ) const
 
 	// Run the processes in sorted order
 	for (auto& currentProcess : sortedProcesses) {
+		assert(time >= 0 && "Time must be non-negative");
+
 		currentProcess.setStart(time);									// Set start time to 0 for simplicity
 		currentProcess.setEnd(time + currentProcess.getBurstTime());	// Set end time to burst time
 		time += currentProcess.getBurstTime();							// Increment the time by the burst time of the process
@@ -60,10 +61,26 @@ void Priority_Scheduler::run(std::vector<Process> waitingQ) const
 
 float Priority_Scheduler::getAverageTurnaroundTime(std::vector<Process> processes) const
 {
-	return 0.0f;
+	// Calculate the average turnaround time
+	float totalTurnaroundTime = 0.0f;
+
+	assert(!processes.empty() && "Process list is empty");
+	assert(totalTurnaroundTime >= 0 && "Total turnaround time must be non-negative");
+	for (const auto& process : processes) {
+		totalTurnaroundTime += process.getTurnaroundTime();
+	}
+	return totalTurnaroundTime /= processes.size();
 }
 
 float Priority_Scheduler::getAverageWaitingTime(std::vector<Process> processes) const
 {
-	return 0.0f;
+	// Calculate the average waiting time
+	float totalWaitingTime = 0.0f;
+
+	assert(!processes.empty() && "Process list is empty");
+	assert(totalWaitingTime >= 0 && "Total turnaround time must be non-negative");
+	for (const auto& process : processes) {
+		totalWaitingTime += process.getWaitingTime();
+	}
+	return totalWaitingTime /= processes.size();
 }

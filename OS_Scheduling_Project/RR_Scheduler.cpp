@@ -22,12 +22,13 @@ void RR_Scheduler::run(std::vector<Process> waitingQ) const
 	GanttChart ganttChart;
 	float time = 0;
 	assert(!waitingQ.empty() && "Waiting queue is empty");
-	assert(time >= 0 && "Time must be non-negative");
 	
 	std::deque<Process> processQueue(waitingQ.begin(), waitingQ.end());	// Create a deque to hold the processes in the waiting queue
 
 	// Run the processes in round-robin fashion
     while (!processQueue.empty()) {
+		assert(time >= 0 && "Time must be non-negative");
+
         // take the front process
         Process p = processQueue.front();
         processQueue.pop_front();
@@ -79,10 +80,26 @@ void RR_Scheduler::run(std::vector<Process> waitingQ) const
 
 float RR_Scheduler::getAverageTurnaroundTime(std::vector<Process> processes) const
 {
-	return 0.0f;
+	// Calculate the average turnaround time
+	float totalTurnaroundTime = 0.0f;
+
+	assert(!processes.empty() && "Process list is empty");
+	assert(totalTurnaroundTime >= 0 && "Total turnaround time must be non-negative");
+	for (const auto& process : processes) {
+		totalTurnaroundTime += process.getTurnaroundTime();
+	}
+	return totalTurnaroundTime /= processes.size();
 }
 
 float RR_Scheduler::getAverageWaitingTime(std::vector<Process> processes) const
 {
-	return 0.0f;
+	// Calculate the average waiting time
+	float totalWaitingTime = 0.0f;
+
+	assert(!processes.empty() && "Process list is empty");
+	assert(totalWaitingTime >= 0 && "Total turnaround time must be non-negative");
+	for (const auto& process : processes) {
+		totalWaitingTime += process.getWaitingTime();
+	}
+	return totalWaitingTime /= processes.size();
 }

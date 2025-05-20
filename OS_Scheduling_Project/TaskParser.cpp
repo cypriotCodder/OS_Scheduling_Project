@@ -6,6 +6,7 @@
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
+#include <cassert>
 
 using namespace std;
 
@@ -27,13 +28,15 @@ vector<Process> TaskParser::parseFile(const std::string& filename) const
 	int pid = 1; // Initialize PID counter
 
 	while (getline(inputFile, line)) {
+		assert(pid >= 0 && "PID must be positive"); // Assert that PID is positive
+
 		istringstream iss(line);
-		string tName, pri, bt;				// Temporary strings to hold the parsed values
+		string tName, pri, bt;						// Temporary strings to hold the parsed values
 		int priority = 0, burstTime = 0;	
 
-		getline(iss, tName, ' '); //Read until the first space
-		getline(iss, pri, ' ');  // Read until the second space
-		getline(iss, bt, ' ');   // Read until the third of the line
+		getline(iss, tName, ' ');	//Read until the first space
+		getline(iss, pri, ' ');		// Read until the second space
+		getline(iss, bt, ' ');		// Read until the third of the line
 
 		//assert the parsing of the strings
 		try

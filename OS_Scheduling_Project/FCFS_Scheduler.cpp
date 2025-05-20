@@ -55,6 +55,9 @@ float FCFS_Scheduler::getAverageTurnaroundTime(std::vector<Process> processes) c
 {
 	// Calculate the average turnaround time
 	float totalTurnaroundTime = 0.0f;
+
+	assert(!processes.empty() && "Process list is empty");
+	assert(totalTurnaroundTime >= 0 && "Total turnaround time must be non-negative");
 	for (const auto& process : processes) {
 		totalTurnaroundTime += process.getTurnaroundTime();
 	}
@@ -65,6 +68,9 @@ float FCFS_Scheduler::getAverageWaitingTime(std::vector<Process> processes) cons
 {
 	// Calculate the average waiting time
 	float totalWaitingTime = 0.0f;
+
+	assert(!processes.empty() && "Process list is empty");
+	assert(totalWaitingTime >= 0 && "Total turnaround time must be non-negative");
 	for (const auto& process : processes) {
 		totalWaitingTime += process.getWaitingTime();
 	}
