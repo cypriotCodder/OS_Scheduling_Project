@@ -38,7 +38,13 @@ public:
 	 */
 	void run()														const;
 
-	void printProcesses() const;
+	/**
+	 * @brief Prints information about the processes.
+	 *
+	 * This method prints details about the processes currently managed by the Scheduler.
+	 * It includes information such as process IDs, arrival times, burst times, and priority.
+	 */
+	void printProcesses()											const;
 
 protected:
 	std::vector<Process> waitingQueue;	// Pointer to the waiting queue

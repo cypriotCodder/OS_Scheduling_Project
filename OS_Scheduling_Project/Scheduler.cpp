@@ -25,10 +25,12 @@ Scheduler::~Scheduler()
 }
 
 /**
- * @brief Executes scheduling algorithms.
+ * @brief Executes different scheduling algorithms based on user input.
  *
- * This method sequentially runs several scheduling algorithms on the waiting queue:
- * FCFS, SJF, Priority, Round Robin, and Priority Round Robin.
+ * This method displays a menu of available scheduling algorithms (FCFS, SJF, Priority,
+ * Round Robin, Priority Round Robin) and executes the selected algorithm on the set
+ * of processes stored in the waiting queue. It continuously prompts the user for a menu
+ * choice until the user chooses to exit.
  */
 void Scheduler::run() const
 {
@@ -88,6 +90,12 @@ void Scheduler::run() const
     }
 }
 
+/**
+ * @brief Prints information about the processes managed by the Scheduler.
+ *
+ * This method prints details about the processes currently stored in the waiting queue.
+ * It displays each process's PID (Process ID), arrival time, burst time, and priority.
+ */
 void Scheduler::printProcesses() const
 {
 	std::cout << "PROCESSES:\n";
