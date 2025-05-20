@@ -32,42 +32,24 @@ Scheduler::~Scheduler()
 void Scheduler::run() const
 {
     // Run FCFS Scheduler
-	std::cout << "===================== FCFS ALGORITHM =====================\n";
+	std::cout << "\n===================== FCFS ALGORITHM =====================\n";
     fcfs_Scheduler.run(this->waitingQueue);
 
     // Run SJF Scheduler
-	std::cout << "===================== SJF ALGORITHM =====================\n";
+	std::cout << "\n===================== SJF ALGORITHM =====================\n";
     sjfScheduler.run(this->waitingQueue);
 
     // Run Priority Scheduler
-	std::cout << "===================== PRIORITY ALGORITHM =====================\n";
+	std::cout << "\n===================== PRIORITY ALGORITHM =====================\n";
     priorityScheduler.run(this->waitingQueue);
 
     // Run Round Robin Scheduler
-	std::cout << "===================== ROUND ROBIN ALGORITHM =====================\n";
+	std::cout << "\n===================== ROUND ROBIN ALGORITHM =====================\n";
     rrScheduler.run(this->waitingQueue);
 
     // Run Priority Round Robin Scheduler
-    std::cout << "===================== PRIORITY ROUND ROBIN ALGORITHM =====================\n";
+    std::cout << "\n===================== PRIORITY ROUND ROBIN ALGORITHM =====================\n";
     priorityRRScheduler.run(this->waitingQueue);
 }
 
-/**
- * @brief Prints details of all processes.
- *
- * This method prints detailed information about all processes in the waiting queue.
- */
-void Scheduler::printProcesses() const
-{
-    // Implementation for printing processes details, if needed.
-}
 
-/**
- * @brief Prints statistical information about scheduling results.
- *
- * This method prints statistical information derived from the scheduling algorithms' results.
- */
-void Scheduler::printStats() const
-{
-    // Implementation for printing statistics, if needed.
-}

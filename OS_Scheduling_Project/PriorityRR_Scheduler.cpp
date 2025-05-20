@@ -25,7 +25,7 @@ void PriorityRR_Scheduler::run(std::vector<Process> waitingQ) const
     assert(time >= 0 && "Time must be non-negative");
 
     deque<Process> sortedProcessQ; // Deque to hold sorted processes by priority
-	vector<Process> tempList = waitingQ; // hold for stats
+	vector<Process> tempList; // hold for stats
 
     // Sort the processes based on priority
     while (!waitingQ.empty()) {
@@ -59,14 +59,13 @@ void PriorityRR_Scheduler::run(std::vector<Process> waitingQ) const
             p.calculateTurnaroundTime(time);
             ganttChart.stamp(p);
             sortedProcessQ.push_front(p); // Add process back to queue
-			tempList.push_back(p); // Add process to tempList for stats
 
             // Print process details
             cout << "Running Process PID: " << p.getPID() << endl;
-            /*cout << "Start Time: " << p.getStart() << endl;
+            cout << "Start Time: " << p.getStart() << endl;
             cout << "End Time: " << p.getEnd() << endl;
             cout << "Waiting Time: " << p.getWaitingTime() << endl;
-            cout << "Turnaround Time: " << p.getTurnaroundTime() << "\n" << endl;*/
+            cout << "Turnaround Time: " << p.getTurnaroundTime() << "\n" << endl;
         }
         else {
             // Process finishes execution
@@ -83,8 +82,8 @@ void PriorityRR_Scheduler::run(std::vector<Process> waitingQ) const
 
             // Print process details
             cout << "\nRunning Process PID: " << p.getPID() << endl;
-            /*cout << "Start Time: " << p.getStart() << endl;
-            cout << "End Time: " << p.getEnd() << endl;*/
+            cout << "Start Time: " << p.getStart() << endl;
+            cout << "End Time: " << p.getEnd() << endl;
             cout << "Waiting Time: " << p.getWaitingTime() << endl;
             cout << "Turnaround Time: " << p.getTurnaroundTime() << "\n" << endl;
         }
@@ -93,8 +92,8 @@ void PriorityRR_Scheduler::run(std::vector<Process> waitingQ) const
     // Print Gantt chart for visualization
     ganttChart.print();
 	std::cout << "STATISTICS:\n";
-	std::cout << "Average Turnaround Time: " << getAverageTurnaroundTime(tempList) << "\n";
-	std::cout << "Average Waiting Time: " << getAverageWaitingTime(tempList) << "\n\n";
+	std::cout << "Average Turnaround Time: " << getAverageTurnaroundTime(tempList) << "ms\n";
+	std::cout << "Average Waiting Time: " << getAverageWaitingTime(tempList) << "ms\n\n";
 
 	cout << "===================== END OF PRIORITY ROUND ROBIN ALGORITHM =====================\n\n";
 }
@@ -135,6 +134,5 @@ float PriorityRR_Scheduler::getAverageWaitingTime(std::vector<Process> processes
     for (const auto& process : processes) {
         totalWaitingTime += process.getWaitingTime();
     }
-
     return totalWaitingTime / processes.size(); // Calculate and return average
 }

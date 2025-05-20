@@ -44,7 +44,7 @@ void RR_Scheduler::run(vector<Process> waitingQ) const
     assert(!waitingQ.empty() && "Waiting queue is empty");
 
     deque<Process> processQueue(waitingQ.begin(), waitingQ.end()); // Deque to hold processes
-    vector<Process> tempList = waitingQ; // hold for stats
+    vector<Process> tempList; // hold for stats
 
     // Run the processes in round-robin fashion
     while (!processQueue.empty()) {
@@ -62,11 +62,11 @@ void RR_Scheduler::run(vector<Process> waitingQ) const
             p.remainingTimeUpdate(this->tQuantum);
 
             // Calculate waiting time and turnaround time
-            p.calculateWaitingTime(time);
-            p.calculateTurnaroundTime(time);
+			if (p.getWaitingTime() == 0) 
+                p.setWaitingTime(p.getStart() - p.getArrivalTime());
+
             ganttChart.stamp(p);
             processQueue.push_back(p);              // Add process back to queue
-			tempList.push_back(p); // Add process to tempList for stats
 
             // Print process details
             cout << "Running Process PID: " << p.getPID() << endl;
@@ -83,8 +83,10 @@ void RR_Scheduler::run(vector<Process> waitingQ) const
             p.remainingTimeUpdate(0);
 
             // Calculate waiting time and turnaround time
-            p.calculateWaitingTime(time);
-            p.calculateTurnaroundTime(time);
+            if (p.getWaitingTime() == 0)
+                p.setWaitingTime(p.getStart()-p.getArrivalTime());
+            p.calculateTurnaroundTime(p.getEnd()-p.getArrivalTime());
+
             ganttChart.stamp(p);
             tempList.push_back(p); // Add process to tempList for stats
 
@@ -100,8 +102,8 @@ void RR_Scheduler::run(vector<Process> waitingQ) const
     // Print Gantt chart for visualization
     ganttChart.print();
     std::cout << "STATISTICS:\n";
-    std::cout << "Average Turnaround Time: " << getAverageTurnaroundTime(ganttChart.getStampEntries()) << "\n";
-    std::cout << "Average Waiting Time: " << getAverageWaitingTime(ganttChart.getStampEntries()) << "\n\n";
+    std::cout << "Average Turnaround Time: " << getAverageTurnaroundTime(tempList) << "ms\n";
+    std::cout << "Average Waiting Time: " << getAverageWaitingTime(tempList) << "ms\n\n";
 
 	cout << "========================== END OF ROUND ROBIN ALGORITHM ==========================\n";
 }
@@ -144,6 +146,5 @@ float RR_Scheduler::getAverageWaitingTime(std::vector<Process> processes) const
     for (const auto& process : processes) {
         totalWaitingTime += process.getWaitingTime();
     }
-
     return totalWaitingTime / processes.size(); // Calculate and return average
 }

@@ -35,7 +35,7 @@ void Priority_Scheduler::run(std::vector<Process> waitingQ) const
 {
     GanttChart ganttChart;              // Create a Gantt chart object
     vector<Process> sortedProcesses;    // Vector to hold processes sorted by priority
-    vector<Process> tempList = waitingQ; // hold for stats
+    vector<Process> tempList; // hold for stats
 
     float time = 0;                     // Current time
 
@@ -82,8 +82,8 @@ void Priority_Scheduler::run(std::vector<Process> waitingQ) const
     // Print the Gantt chart
     ganttChart.print();
     std::cout << "STATISTICS:\n";
-    std::cout << "Average Turnaround Time: " << getAverageTurnaroundTime(tempList) << "\n";
-    std::cout << "Average Waiting Time: " << getAverageWaitingTime(tempList) << "\n\n";
+    std::cout << "Average Turnaround Time: " << getAverageTurnaroundTime(tempList) << "ms\n";
+    std::cout << "Average Waiting Time: " << getAverageWaitingTime(tempList) << "ms\n\n";
 
 	cout << "===================== END OF PRIORITY ALGORITHM =====================\n";
 }
@@ -105,7 +105,6 @@ float Priority_Scheduler::getAverageTurnaroundTime(std::vector<Process> processe
     for (const auto& process : processes) {
         totalTurnaroundTime += process.getTurnaroundTime();
     }
-
     return totalTurnaroundTime / processes.size();
 }
 

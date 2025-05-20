@@ -38,23 +38,6 @@ public:
 	 */
 	void run()														const;
 
-	/**
-	 * @brief Prints the list of processes in the scheduler.
-	 *
-	 * This method prints details of all processes currently in the scheduler,
-	 * including their IDs, burst times, priorities, etc.
-	 */
-	void printProcesses()											const;
-
-	/**
-	 * @brief Prints statistics of the scheduling algorithms.
-	 *
-	 * This method prints statistics such as average waiting time and average
-	 * turnaround time for each scheduling algorithm used in the scheduler.
-	 */
-	void printStats()												const;
-
-
 protected:
 	std::vector<Process> readyQueue;	// Pointer to the process queue
 	std::vector<Process> waitingQueue;	// Pointer to the waiting queue
