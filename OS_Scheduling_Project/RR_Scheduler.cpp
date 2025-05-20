@@ -6,6 +6,8 @@
 #include "GanttChart.h"
 #include <deque>
 
+using namespace std;
+
 RR_Scheduler::RR_Scheduler(float tQ)
 {
 	this->tQuantum= tQ; // Initialize the time this->tQuantum for Round Robin scheduling
@@ -32,11 +34,44 @@ void RR_Scheduler::run(std::vector<Process> waitingQ) const
         processQueue.pop_front();
 		//@TODO
 
-		if (p.getBurstTime() > tQuantum) {
+		if (p.getRemainingTime() > tQuantum) {
 			// Process will run for the time quantum
+			p.setStart(time);					// Set start time
+			p.setEnd(time + tQuantum);			// Set end time
+			time += tQuantum;
+			p.remainingTimeUpdate(p.getBurstTime() - tQuantum);
+
+			//calculate waiting time and turnaround time
+			p.calculateWaitingTime(time);
+			p.calculateTurnaroundTime(time);
+			ganttChart.stamp(p);
+			processQueue.push_back(p);			// Add the process back to the queue
+
+			// Print the process details
+			cout << "Running Process PID: " << p.getPID() << endl;
+			cout << "Start Time: " << p.getStart() << endl;
+			cout << "End Time: " << p.getEnd() << endl;
+			cout << "Waiting Time: " << p.getWaitingTime() << endl;
+			cout << "Turnaround Time: " << p.getTurnaroundTime() << "\n" << endl;
 		}
 		else {
 			// Process will finish its execution
+			p.setStart(time); // Set start time
+			p.setEnd(time + p.getRemainingTime());	// Set end time
+			time += p.getRemainingTime();
+			p.remainingTimeUpdate(0);
+
+			//calculate waiting time and turnaround time
+			p.calculateWaitingTime(time);
+			p.calculateTurnaroundTime(time);
+			ganttChart.stamp(p);
+
+			// Print the process details
+			cout << "Running Process PID: " << p.getPID() << endl;
+			cout << "Start Time: " << p.getStart() << endl;
+			cout << "End Time: " << p.getEnd() << endl;
+			cout << "Waiting Time: " << p.getWaitingTime() << endl;
+			cout << "Turnaround Time: " << p.getTurnaroundTime() << "\n" << endl;
 		}
 
     }
