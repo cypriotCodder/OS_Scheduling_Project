@@ -40,7 +40,7 @@ void RR_Scheduler::run(std::vector<Process> waitingQ) const
 {
     GanttChart ganttChart; // Gantt chart to visualize scheduling
 
-    float time = 0; // Current time
+    float time = 0;                                                     // Current time
     assert(!waitingQ.empty() && "Waiting queue is empty");
 
     std::deque<Process> processQueue(waitingQ.begin(), waitingQ.end()); // Deque to hold processes
@@ -55,8 +55,8 @@ void RR_Scheduler::run(std::vector<Process> waitingQ) const
 
         if (p.getRemainingTime() > this->tQuantum) {
             // Process runs for the time quantum
-            p.setStart(time); // Set start time
-            p.setEnd(time + this->tQuantum); // Set end time
+            p.setStart(time);                       // Set start time
+            p.setEnd(time + this->tQuantum);        // Set end time
             time += this->tQuantum;
             p.remainingTimeUpdate(this->tQuantum);
 
@@ -64,7 +64,7 @@ void RR_Scheduler::run(std::vector<Process> waitingQ) const
             p.calculateWaitingTime(time);
             p.calculateTurnaroundTime(time);
             ganttChart.stamp(p);
-            processQueue.push_back(p); // Add process back to queue
+            processQueue.push_back(p);              // Add process back to queue
 
             // Print process details
             cout << "Running Process PID: " << p.getPID() << endl;
@@ -75,8 +75,8 @@ void RR_Scheduler::run(std::vector<Process> waitingQ) const
         }
         else {
             // Process finishes execution
-            p.setStart(time); // Set start time
-            p.setEnd(time + p.getRemainingTime()); // Set end time
+            p.setStart(time);                       // Set start time
+            p.setEnd(time + p.getRemainingTime());  // Set end time
             time += p.getRemainingTime();
             p.remainingTimeUpdate(0);
 

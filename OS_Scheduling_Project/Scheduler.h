@@ -24,10 +24,10 @@ protected:
 	std::vector<Process> waitingQueue;	// Pointer to the waiting queue
 	std::vector<Process> finishedQueue;	// Pointer to the finished queue
 
-	FCFS_Scheduler fcfs_Scheduler;				// FCFS scheduler object
-	SJF_Scheduler sjfScheduler;				// SJF scheduler object
-	RR_Scheduler rrScheduler = RR_Scheduler(20);					// RR scheduler object
-	Priority_Scheduler priorityScheduler;		// Priority scheduler object
-	PriorityRR_Scheduler priorityRRScheduler = PriorityRR_Scheduler(20); // Priority RR scheduler object
+	FCFS_Scheduler fcfs_Scheduler;											// FCFS scheduler object
+	SJF_Scheduler sjfScheduler;												// SJF scheduler object
+	RR_Scheduler rrScheduler = RR_Scheduler(20);							// RR scheduler object
+	Priority_Scheduler priorityScheduler;									// Priority scheduler object
+	PriorityRR_Scheduler priorityRRScheduler = PriorityRR_Scheduler(20);	// Priority RR scheduler object
 };
 
