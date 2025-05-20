@@ -22,6 +22,7 @@
     <ClCompile Include="Driver.cpp" />
     <ClCompile Include="FCFS_Scheduler.cpp" />
     <ClCompile Include="GanttChart.cpp" />
+    <ClCompile Include="PriorityRR_Scheduler.cpp" />
     <ClCompile Include="Priority_Scheduler.cpp" />
     <ClCompile Include="Process.cpp" />
     <ClCompile Include="RR_Scheduler.cpp" />
