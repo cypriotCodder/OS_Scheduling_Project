@@ -24,8 +24,7 @@ void RR_Scheduler::run(std::vector<Process> waitingQ) const
 	assert(!waitingQ.empty() && "Waiting queue is empty");
 	assert(time >= 0 && "Time must be non-negative");
 	
-	// Create a deque to hold the processes in the waiting queue
-	std::deque<Process> processQueue(waitingQ.begin(), waitingQ.end());
+	std::deque<Process> processQueue(waitingQ.begin(), waitingQ.end());	// Create a deque to hold the processes in the waiting queue
 
 	// Run the processes in round-robin fashion
     while (!processQueue.empty()) {
@@ -34,12 +33,12 @@ void RR_Scheduler::run(std::vector<Process> waitingQ) const
         processQueue.pop_front();
 		//@TODO
 
-		if (p.getRemainingTime() > tQuantum) {
+		if (p.getRemainingTime() > this->tQuantum) {
 			// Process will run for the time quantum
 			p.setStart(time);					// Set start time
-			p.setEnd(time + tQuantum);			// Set end time
-			time += tQuantum;
-			p.remainingTimeUpdate(p.getBurstTime() - tQuantum);
+			p.setEnd(time + this->tQuantum);			// Set end time
+			time += this->tQuantum;
+			p.remainingTimeUpdate(this->tQuantum);
 
 			//calculate waiting time and turnaround time
 			p.calculateWaitingTime(time);

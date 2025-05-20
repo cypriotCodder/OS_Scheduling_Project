@@ -12,7 +12,7 @@ Scheduler::~Scheduler()
 {
 }
 
-void Scheduler::run() const
+void Scheduler::run()				const 
 {
 	//Run FCFS Scheduler
 	fcfs_Scheduler.run(this->waitingQueue); 
@@ -21,11 +21,11 @@ void Scheduler::run() const
 	rrScheduler.run(this->waitingQueue);
 }
 
-void Scheduler::printProcesses() const
+void Scheduler::printProcesses()	const
 {
 }
 
-void Scheduler::printStats() const
+void Scheduler::printStats()		const
 {
 }
 
