@@ -86,7 +86,6 @@ void PriorityRR_Scheduler::run(std::vector<Process> waitingQ) const
             cout << "Turnaround Time: " << p.getTurnaroundTime() << "\n" << endl;
         }
     }
-
     // Print Gantt chart for visualization
     std::cout << "===================== PRIORITY ROUND ROBIN ALGORITHM =====================\n";
     ganttChart.print();
