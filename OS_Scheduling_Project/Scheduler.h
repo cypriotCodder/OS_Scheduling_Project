@@ -39,9 +39,7 @@ public:
 	void run()														const;
 
 protected:
-	std::vector<Process> readyQueue;	// Pointer to the process queue
 	std::vector<Process> waitingQueue;	// Pointer to the waiting queue
-	std::vector<Process> finishedQueue;	// Pointer to the finished queue
 
 	FCFS_Scheduler fcfs_Scheduler;											// FCFS scheduler object
 	SJF_Scheduler sjfScheduler;												// SJF scheduler object
