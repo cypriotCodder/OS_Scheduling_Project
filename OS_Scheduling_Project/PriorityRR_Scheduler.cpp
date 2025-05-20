@@ -8,103 +8,126 @@
 
 using namespace std;
 
+/**
+ * @brief Runs the Priority Round Robin scheduling algorithm.
+ *
+ * This method executes the Priority Round Robin scheduling algorithm
+ * on the provided waiting queue of processes.
+ *
+ * @param waitingQ Vector of processes in the waiting queue.
+ */
 void PriorityRR_Scheduler::run(std::vector<Process> waitingQ) const
 {
-	GanttChart ganttChart;
-	float time = 0;
-	assert(!waitingQ.empty() && "Waiting queue is empty");
-	assert(time >= 0 && "Time must be non-negative");
+    GanttChart ganttChart; // Gantt chart to visualize scheduling
 
-	std::deque<Process> sortedProcessQ;	
+    float time = 0; // Current time
+    assert(!waitingQ.empty() && "Waiting queue is empty");
+    assert(time >= 0 && "Time must be non-negative");
 
-	// Sort the processes based on priority
-	while (!waitingQ.empty()) {
-		auto it = min_element(
-			waitingQ.begin(),
-			waitingQ.end(),
-			[](Process& a, Process& b) {
-				assert(a.getPriority() >= 0 && b.getPriority() >= 0 && "Priority must be non-negative"); //Assert that priority is non-negative
-				return a.getPriority() > b.getPriority();
-			}
-		);
-		sortedProcessQ.push_back(*it);
-		waitingQ.erase(it);
-	}
+    std::deque<Process> sortedProcessQ; // Deque to hold sorted processes by priority
 
-	// Run the processes in round-robin fashion
-	while (!sortedProcessQ.empty()) {
-		// take the front process
-		Process p = sortedProcessQ.front();
-		sortedProcessQ.pop_front();
-		assert(time >= 0 && "Time must be non-negative");
+    // Sort the processes based on priority
+    while (!waitingQ.empty()) {
+        auto it = min_element(
+            waitingQ.begin(),
+            waitingQ.end(),
+            [](Process& a, Process& b) {
+                assert(a.getPriority() >= 0 && b.getPriority() >= 0 && "Priority must be non-negative");
+                return a.getPriority() > b.getPriority();
+            }
+        );
+        sortedProcessQ.push_back(*it);
+        waitingQ.erase(it);
+    }
 
-		if (p.getRemainingTime() > this->tQuantum) {
-			// Process will run for the time quantum
-			p.setStart(time);							// Set start time
-			p.setEnd(time + this->tQuantum);			// Set end time
-			time += this->tQuantum;
-			p.remainingTimeUpdate(this->tQuantum);
+    // Run the processes in round-robin fashion
+    while (!sortedProcessQ.empty()) {
+        Process p = sortedProcessQ.front();
+        sortedProcessQ.pop_front();
+        assert(time >= 0 && "Time must be non-negative");
 
-			//calculate waiting time and turnaround time
-			p.calculateWaitingTime(time);
-			p.calculateTurnaroundTime(time);
-			ganttChart.stamp(p);
-			sortedProcessQ.push_front(p);				// Add the process back to the queue
+        if (p.getRemainingTime() > this->tQuantum) {
+            // Process runs for the time quantum
+            p.setStart(time);
+            p.setEnd(time + this->tQuantum);
+            time += this->tQuantum;
+            p.remainingTimeUpdate(this->tQuantum);
 
-			// Print the process details
-			cout << "Running Process PID: " << p.getPID() << endl;
-			cout << "Start Time: " << p.getStart() << endl;
-			cout << "End Time: " << p.getEnd() << endl;
-			cout << "Waiting Time: " << p.getWaitingTime() << endl;
-			cout << "Turnaround Time: " << p.getTurnaroundTime() << "\n" << endl;
-		}
-		else {
-			// Process will finish its execution
-			p.setStart(time); // Set start time
-			p.setEnd(time + p.getRemainingTime());	// Set end time
-			time += p.getRemainingTime();
-			p.remainingTimeUpdate(0);
+            // Calculate waiting time and turnaround time
+            p.calculateWaitingTime(time);
+            p.calculateTurnaroundTime(time);
+            ganttChart.stamp(p);
+            sortedProcessQ.push_front(p); // Add process back to queue
 
-			//calculate waiting time and turnaround time
-			p.calculateWaitingTime(time);
-			p.calculateTurnaroundTime(time);
-			ganttChart.stamp(p);
+            // Print process details
+            cout << "Running Process PID: " << p.getPID() << endl;
+            cout << "Start Time: " << p.getStart() << endl;
+            cout << "End Time: " << p.getEnd() << endl;
+            cout << "Waiting Time: " << p.getWaitingTime() << endl;
+            cout << "Turnaround Time: " << p.getTurnaroundTime() << "\n" << endl;
+        }
+        else {
+            // Process finishes execution
+            p.setStart(time);
+            p.setEnd(time + p.getRemainingTime());
+            time += p.getRemainingTime();
+            p.remainingTimeUpdate(0);
 
-			// Print the process details
-			cout << "Running Process PID: " << p.getPID() << endl;
-			cout << "Start Time: " << p.getStart() << endl;
-			cout << "End Time: " << p.getEnd() << endl;
-			cout << "Waiting Time: " << p.getWaitingTime() << endl;
-			cout << "Turnaround Time: " << p.getTurnaroundTime() << "\n" << endl;
-		}
+            // Calculate waiting time and turnaround time
+            p.calculateWaitingTime(time);
+            p.calculateTurnaroundTime(time);
+            ganttChart.stamp(p);
 
-	}
-	std::cout << "===================== PRIORITY ROUND ROBIN ALGORITHM =====================\n";
-	ganttChart.print();
+            // Print process details
+            cout << "Running Process PID: " << p.getPID() << endl;
+            cout << "Start Time: " << p.getStart() << endl;
+            cout << "End Time: " << p.getEnd() << endl;
+            cout << "Waiting Time: " << p.getWaitingTime() << endl;
+            cout << "Turnaround Time: " << p.getTurnaroundTime() << "\n" << endl;
+        }
+    }
+
+    // Print Gantt chart for visualization
+    std::cout << "===================== PRIORITY ROUND ROBIN ALGORITHM =====================\n";
+    ganttChart.print();
 }
 
+/**
+ * @brief Calculates the average turnaround time for a list of processes.
+ *
+ * @param processes Vector of processes for which average turnaround time is calculated.
+ * @return Average turnaround time.
+ */
 float PriorityRR_Scheduler::getAverageTurnaroundTime(std::vector<Process> processes) const
 {
-	// Calculate the average turnaround time
-	float totalTurnaroundTime = 0.0f;
+    float totalTurnaroundTime = 0.0f;
+    assert(!processes.empty() && "Process list is empty");
+    assert(totalTurnaroundTime >= 0 && "Total turnaround time must be non-negative");
 
-	assert(!processes.empty() && "Process list is empty");
-	assert(totalTurnaroundTime >= 0 && "Total turnaround time must be non-negative");
-	for (const auto& process : processes) {
-		totalTurnaroundTime += process.getTurnaroundTime();
-	}
-	return totalTurnaroundTime /= processes.size();
+    // Calculate total turnaround time
+    for (const auto& process : processes) {
+        totalTurnaroundTime += process.getTurnaroundTime();
+    }
+
+    return totalTurnaroundTime / processes.size(); // Calculate and return average
 }
 
+/**
+ * @brief Calculates the average waiting time for a list of processes.
+ *
+ * @param processes Vector of processes for which average waiting time is calculated.
+ * @return Average waiting time.
+ */
 float PriorityRR_Scheduler::getAverageWaitingTime(std::vector<Process> processes) const
 {
-	// Calculate the average waiting time
-	float totalWaitingTime = 0.0f;
+    float totalWaitingTime = 0.0f;
+    assert(!processes.empty() && "Process list is empty");
+    assert(totalWaitingTime >= 0 && "Total waiting time must be non-negative");
 
-	assert(!processes.empty() && "Process list is empty");
-	assert(totalWaitingTime >= 0 && "Total turnaround time must be non-negative");
-	for (const auto& process : processes) {
-		totalWaitingTime += process.getWaitingTime();
-	}
-	return totalWaitingTime /= processes.size();
+    // Calculate total waiting time
+    for (const auto& process : processes) {
+        totalWaitingTime += process.getWaitingTime();
+    }
+
+    return totalWaitingTime / processes.size(); // Calculate and return average
 }
