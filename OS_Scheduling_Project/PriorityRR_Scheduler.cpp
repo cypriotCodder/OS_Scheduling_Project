@@ -48,7 +48,7 @@ void PriorityRR_Scheduler::run(std::vector<Process> waitingQ) const
 			p.calculateWaitingTime(time);
 			p.calculateTurnaroundTime(time);
 			ganttChart.stamp(p);
-			sortedProcessQ.push_back(p);			// Add the process back to the queue
+			sortedProcessQ.push_front(p);			// Add the process back to the queue
 
 			// Print the process details
 			cout << "Running Process PID: " << p.getPID() << endl;
