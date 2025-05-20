@@ -3,39 +3,66 @@
 #include <vector>
 #include "Process.h"
 
+/**
+ * @brief Constructor for Scheduler class.
+ *
+ * Initializes the waiting queue with the provided processes.
+ *
+ * @param processes Vector of processes to initialize the waiting queue.
+ */
 Scheduler::Scheduler(std::vector<Process> processes)
 {
-	this->waitingQueue = processes; // Initialize the waiting queue with the processes
+    this->waitingQueue = processes;
 }
 
+/**
+ * @brief Destructor for Scheduler class.
+ */
 Scheduler::~Scheduler()
 {
+    // Destructor implementation, if needed.
 }
 
-void Scheduler::run()				const 
+/**
+ * @brief Executes scheduling algorithms.
+ *
+ * This method sequentially runs several scheduling algorithms on the waiting queue:
+ * FCFS, SJF, Priority, Round Robin, and Priority Round Robin.
+ */
+void Scheduler::run() const
 {
-	//Run FCFS Scheduler
-	fcfs_Scheduler.run(this->waitingQueue); 
-	sjfScheduler.run(this->waitingQueue); 
-	priorityScheduler.run(this->waitingQueue);
-	rrScheduler.run(this->waitingQueue);
-	priorityRRScheduler.run(this->waitingQueue); // Run the Priority RR scheduler
+    // Run FCFS Scheduler
+    fcfs_Scheduler.run(this->waitingQueue);
+
+    // Run SJF Scheduler
+    sjfScheduler.run(this->waitingQueue);
+
+    // Run Priority Scheduler
+    priorityScheduler.run(this->waitingQueue);
+
+    // Run Round Robin Scheduler
+    rrScheduler.run(this->waitingQueue);
+
+    // Run Priority Round Robin Scheduler
+    priorityRRScheduler.run(this->waitingQueue);
 }
 
-void Scheduler::printProcesses()	const
+/**
+ * @brief Prints details of all processes.
+ *
+ * This method prints detailed information about all processes in the waiting queue.
+ */
+void Scheduler::printProcesses() const
 {
+    // Implementation for printing processes details, if needed.
 }
 
-void Scheduler::printStats()		const
+/**
+ * @brief Prints statistical information about scheduling results.
+ *
+ * This method prints statistical information derived from the scheduling algorithms' results.
+ */
+void Scheduler::printStats() const
 {
+    // Implementation for printing statistics, if needed.
 }
-
-
-
-
-
-
-
-
-
-
